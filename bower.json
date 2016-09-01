@@ -1,0 +1,20 @@
+{
+  "name": "mu-jquery-hub",
+  "authors": [
+    "Mikael Karon <mikael@karon.se>"
+  ],
+  "description": "A jQuery hub heavily inspired by the jQuery official docs",
+  "main": "jquery.hub.js",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0"
+  }
+}
