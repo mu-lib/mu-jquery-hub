@@ -1,0 +1,22 @@
+{
+  "name": "mu-jquery-hub",
+  "version": "0.0.1",
+  "description": "A jQuery hub heavily inspired by the jQuery official docs",
+  "main": "jquery.hub.js",
+  "scripts": {
+    "release": "standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mu-lib/mu-jquery-hub.git"
+  },
+  "author": "Mikael Karon <mikael@karon.se>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mu-lib/mu-jquery-hub/issues"
+  },
+  "homepage": "https://github.com/mu-lib/mu-jquery-hub#readme",
+  "devDependencies": {
+    "standard-version": "^2.4.0"
+  }
+}
