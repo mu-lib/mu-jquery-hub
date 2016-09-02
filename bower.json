@@ -4,7 +4,7 @@
     "Mikael Karon <mikael@karon.se>"
   ],
   "description": "A jQuery hub heavily inspired by the jQuery official docs",
-  "main": "jquery.hub.js",
+  "main": "hub.js",
   "license": "MIT",
   "homepage": "",
   "ignore": [
@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "^3.1.0"
+    "jquery": "^3.1.0",
+    "mu-compose": "^1.0.0"
   }
 }
