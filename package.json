@@ -1,6 +1,6 @@
 {
   "name": "mu-jquery-hub",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A jQuery hub heavily inspired by the jQuery official docs",
   "main": "jquery.hub.js",
   "scripts": {
