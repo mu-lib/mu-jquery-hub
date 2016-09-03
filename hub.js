@@ -6,7 +6,7 @@
   } else {
     root["mu-jquery-hub/hub"] = factory(root.jQuery);
   }
-}(this, function($) {
+})(this, function($) {
   var slice = Array.prototype.slice;
 
   return function() {
@@ -32,4 +32,4 @@
       return topic;
     }
   }
-}));
+});
