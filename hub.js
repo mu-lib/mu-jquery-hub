@@ -12,6 +12,29 @@
   return function() {
     var args = slice.call(arguments);
     var topics = {};
+    var proxied = {};
+
+    function subscribe(add) {
+      return function() {
+        var self = this;
+
+        return add.apply(self, $.map(arguments, function (arg) {
+          proxy = $.proxy(arg, self);
+          proxied[proxy.guid] = arg;
+          return proxy;
+        }));
+      }
+    }
+
+    function unsubscribe(remove) {
+      return function() {
+        var self = this;
+
+        return remove.apply(self, $.map(arguments, function (arg) {
+          return proxied[arg.guid] || arg;
+        }));
+      }
+    }
 
     return function(id) {
       var callbacks,
@@ -20,10 +43,11 @@
 
       if (!topic) {
         callbacks = $.Callbacks.apply(null, args);
+
         topic = {
           publish: callbacks.fire,
-          subscribe: callbacks.add,
-          unsubscribe: callbacks.remove
+          subscribe: subscribe(callbacks.add),
+          unsubscribe: unsubscribe(callbacks.remove)
         };
         if (id) {
           topics[id] = topic;
