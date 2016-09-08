@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/mu-lib/mu-jquery-hub/compare/v1.1.0...v1.1.1) (2016-09-08)
+
+
+### Bug Fixes
+
+* UMD fixes ([04c79a9](https://github.com/mu-lib/mu-jquery-hub/commit/04c79a9))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/mu-lib/mu-jquery-hub/compare/v1.0.1...v1.1.0) (2016-09-06)
 
