@@ -16,6 +16,9 @@
     "url": "https://github.com/mu-lib/mu-jquery-hub/issues"
   },
   "homepage": "https://github.com/mu-lib/mu-jquery-hub#readme",
+  "dependencies": {
+    "jquery": "^3.1.0"
+  },
   "devDependencies": {
     "standard-version": "^2.4.0"
   }
