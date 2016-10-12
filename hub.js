@@ -1,25 +1,25 @@
-(function(modules, root, factory) {
+(function (modules, root, factory) {
   if (typeof define === "function" && define.amd) {
     define(modules, factory);
   } else if (typeof module === "object" && module.exports) {
     module.exports = factory.apply(root, modules.map(require));
   } else {
-    root["mu-jquery-hub/hub"] = factory.apply(root, modules.map(function(m) {
-      return {
+    root["mu-jquery-hub/hub"] = factory.apply(root, modules.map(function (m) {
+      return this[m] || root[m];
+    }, {
         "jquery": root.jQuery
-      }[m] || root[m];
-    }));
+      }));
   }
-})(["jquery"], this, function($) {
+})(["jquery"], this, function ($) {
   var slice = Array.prototype.slice;
 
-  return function() {
+  return function () {
     var args = slice.call(arguments);
     var topics = {};
     var proxied = {};
 
     function subscribe(add) {
-      return function() {
+      return function () {
         var self = this;
 
         return add.apply(self, $.map(arguments, function (arg) {
@@ -31,7 +31,7 @@
     }
 
     function unsubscribe(remove) {
-      return function() {
+      return function () {
         var self = this;
 
         return remove.apply(self, $.map(arguments, function (arg) {
@@ -40,7 +40,7 @@
       }
     }
 
-    return function(id) {
+    return function (id) {
       var callbacks,
         method,
         topic = id && topics[id];
