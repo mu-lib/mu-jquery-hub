@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/mu-lib/mu-jquery-hub#readme",
   "dependencies": {
+  },
+  "peerDependencies": {
     "jquery": "^3.1.0"
   },
   "devDependencies": {
