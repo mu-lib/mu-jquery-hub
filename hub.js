@@ -10,6 +10,7 @@
   var slice = Array.prototype.slice;
 
   return function () {
+    var $ = this;
     var args = slice.call(arguments);
     var topics = {};
     var proxied = {};
@@ -17,7 +18,6 @@
     function subscribe(add) {
       return function () {
         var me = this;
-        var $ = me.constructor;
 
         return add.apply(me, $.map(arguments, function (arg) {
           proxy = $.proxy(arg, me);
@@ -29,7 +29,7 @@
 
     function unsubscribe(remove) {
       return function () {
-        return remove.apply(this, this.constructor.map(arguments, function (arg) {
+        return remove.apply(this, $.map(arguments, function (arg) {
           return proxied[arg.guid] || arg;
         }));
       }
@@ -41,7 +41,7 @@
       var topic = id && topics[id];
 
       if (!topic) {
-        callbacks = this.constructor.Callbacks.apply(null, args);
+        callbacks = $.Callbacks.apply(null, args);
 
         topic = {
           publish: callbacks.fire,
