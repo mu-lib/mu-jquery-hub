@@ -16,10 +16,11 @@
 
     function subscribe(add) {
       return function () {
-        var self = this;
+        var me = this;
+        var $ = me.constructor;
 
-        return add.apply(self, $.map(arguments, function (arg) {
-          proxy = $.proxy(arg, self);
+        return add.apply(me, $.map(arguments, function (arg) {
+          proxy = $.proxy(arg, me);
           proxied[proxy.guid] = arg;
           return proxy;
         }));
@@ -28,31 +29,31 @@
 
     function unsubscribe(remove) {
       return function () {
-        var self = this;
-
-        return remove.apply(self, $.map(arguments, function (arg) {
+        return remove.apply(this, this.constructor.map(arguments, function (arg) {
           return proxied[arg.guid] || arg;
         }));
       }
     }
 
     return function (id) {
-      var callbacks,
-        method,
-        topic = id && topics[id];
+      var callbacks;
+      var method;
+      var topic = id && topics[id];
 
       if (!topic) {
-        callbacks = $.Callbacks.apply(null, args);
+        callbacks = this.constructor.Callbacks.apply(null, args);
 
         topic = {
           publish: callbacks.fire,
           subscribe: subscribe(callbacks.add),
           unsubscribe: unsubscribe(callbacks.remove)
         };
+
         if (id) {
           topics[id] = topic;
         }
       }
+
       return topic;
     }
   }
