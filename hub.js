@@ -2,15 +2,11 @@
   if (typeof define === "function" && define.amd) {
     define(modules, factory);
   } else if (typeof module === "object" && module.exports) {
-    module.exports = factory.apply(root, modules.map(require));
+    module.exports = factory.call(root);
   } else {
-    root["mu-jquery-hub/hub"] = factory.apply(root, modules.map(function (m) {
-      return this[m] || root[m];
-    }, {
-        "jquery": root.jQuery
-      }));
+    root["mu-jquery-hub/hub"] = factory.call(root);
   }
-})(["jquery"], this, function ($) {
+})([], this, function () {
   var slice = Array.prototype.slice;
 
   return function () {
